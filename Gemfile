@@ -60,3 +60,26 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# create-haml-environment
+gem 'haml-rails'
+
+# FontAwesome able to use
+gem 'font-awesome-sass'
+
+# devise install
+gem 'devise'
+
+# Carrierwave Introduce
+# gem 'carrierwave'
+# gem 'mini_magick'
+# gem 'carrierwave-audio'
+# gem 'ruby-sox'
+
+# gem 'rails-i18n'
+
+gem 'pry-rails'
+gem 'fog-aws'
+gem 'jquery-rails'
+gem 'kaminari', '~> 0.17.0'
+gem 'gretel'
