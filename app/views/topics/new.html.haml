@@ -1,0 +1,36 @@
+= render 'header'
+%br
+%br
+
+スレッド作成ページ
+%br
+%br
+
+.topic-new-page__form
+  = form_with(model: @topic, url: topics_path, local: true, method: :post) do |f|
+    = render "devise/shared/error_messages", resource: @topic
+
+    .topic-new-page__form__title
+      .topic-new-page__form__title__title
+        スレッドタイトル
+    .topic-new-page__form__title-form
+      = f.text_field :title, autofocus: true, autocomplete: "title", placeholder: "スレッドのタイトルを入力してください" ,class: 'title-form'
+    %br
+
+    .topic-new-page__form__category
+      .topic-new-page__form__category__title
+        スレッドカテゴリ(複数選択可)
+    .topic-new-page__form__category-form
+      = f.collection_check_boxes :category_ids, @categories, :id, :name, include_hidden: false do |b|
+        = b.label { b.check_box + b.text }
+    %br
+
+    .topic-new-page__form__message
+      .topic-new-page__form__message__title
+        スレッドタイトル
+    .topic-new-page__form__message-form
+      = f.text_area :message, autofocus: true, autocomplete: "text", placeholder: "最初のレスメッセージを入力してください" ,class: ''
+    %br
+
+    .topic-new-page__form__actions
+      = f.submit "スレッドを作成する" ,class: 'submit-button'
