@@ -38,6 +38,7 @@ class TopicsController < ApplicationController
 
   def show
     @messages = Message.where(topic_id: @topic.id)
+    @message = Message.new
   end
 
 
