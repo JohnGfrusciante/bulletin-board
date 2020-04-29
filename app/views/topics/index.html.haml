@@ -3,3 +3,21 @@
 
   - if user_signed_in?
     = link_to "スレッド作成", new_topic_path
+
+%br
+
+  - if @topics.present?
+    .topics-list
+      %ul
+        - @topics.each do |topic|
+          %li.topics-list__content
+            .topics-list__content__title
+              = link_to "スレッドタイトル：#{topic.title}", "/topics/#{topic.id}", method: :get
+            .topics-list__content__category
+              カテゴリ：
+              - topic.topic_categories.each do |topic_category|
+                = topic_category.category.name
+                |
+          %br
+  - else
+    ※まだスレッドは作成されていません。

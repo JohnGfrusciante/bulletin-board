@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
+  before_action :set_topic, only: [:edit, :show]
 
   def index
+    @topics = Topic.all.order("created_at DESC")
   end
 
   def new
@@ -34,13 +36,19 @@ class TopicsController < ApplicationController
   end
 
 
+  def show
+    @messages = Message.where(topic_id: @topic.id)
+  end
+
+
+
   private
+  def set_topic
+    @topic = Topic.find(params[:id])
+  end
+
   def topic_params
     params.require(:topic).permit(:title, category_ids: [])
   end
-
-  # def message_params
-  #   params.require(:message).permit(:text).merge(user_id: current_user.id, topic_id: @topic.id)
-  # end
 
 end
