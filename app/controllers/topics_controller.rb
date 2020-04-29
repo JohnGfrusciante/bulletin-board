@@ -42,6 +42,10 @@ class TopicsController < ApplicationController
   end
 
 
+  def search
+    @topic_searchs = Topic.search(params[:search_word]).order("created_at DESC").uniq
+  end
+
 
   private
   def set_topic

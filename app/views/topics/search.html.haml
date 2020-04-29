@@ -1,0 +1,15 @@
+= render 'header'
+
+.search-page
+  %ul
+    - @topic_searchs.each do |topic|
+      %li.search-page__topics-list
+
+        .search-page__topics-list__title
+          = link_to "スレッドタイトル：#{topic.title}", "/topics/#{topic.id}", method: :get
+        .search-page__topics-list__category
+          カテゴリ：
+          - topic.topic_categories.each do |topic_category|
+            = topic_category.category.name
+            |
+          %br
