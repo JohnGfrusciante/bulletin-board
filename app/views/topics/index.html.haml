@@ -4,7 +4,17 @@
   - if user_signed_in?
     = link_to "スレッド作成", new_topic_path
 
-%br
+  %br
+  %br
+
+  .top-page__search__keyword__title
+    ■キーワードで検索
+  .top-page__search__keyword__form
+    = form_with(url: search_topics_path, local: true, method: :get, class: "search-form") do |f|
+      = f.text_field :search_word, autocomplete: "content", placeholder: "キーワードを入力してください" ,class: 'search-input'
+      = f.submit "検索" ,class: 'submit-button'
+
+  %br
 
   - if @topics.present?
     .topics-list

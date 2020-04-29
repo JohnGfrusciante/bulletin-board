@@ -17,14 +17,15 @@
 
 %br
 
-.message-form
-  .message-form__title
-    投稿入力フォーム
-  .message-form__form
-    = form_with(model: @message, url: "/topics/#{@topic.id}/messages", local: true, method: :post) do |f|
-      = render "devise/shared/error_messages", resource: @message
+- if user_signed_in?
+  .message-form
+    .message-form__title
+      投稿入力フォーム
+    .message-form__form
+      = form_with(model: @message, url: "/topics/#{@topic.id}/messages", local: true, method: :post) do |f|
+        = render "devise/shared/error_messages", resource: @message
 
-      = f.text_area :text, autofocus: true, autocomplete: "text", placeholder: "メッセージを入力してください" ,class: ''
+        = f.text_area :text, autofocus: true, autocomplete: "text", placeholder: "メッセージを入力してください" ,class: ''
 
-      .message-form__form__actions
-        = f.submit "投稿する", class: 'submit-button'
+        .message-form__form__actions
+          = f.submit "投稿する", class: 'submit-button'
