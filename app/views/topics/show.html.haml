@@ -1,0 +1,16 @@
+= render 'header'
+
+%br
+
+= "スレッドタイトル：#{@topic.title}"
+
+.messages-list
+  %ul
+    - @messages.each do |message|
+      %li.messages-list__content
+        = message.user.name
+        %br
+        = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+        %br
+        = safe_join(message.text.split("\n"),tag(:br))
+        %br
